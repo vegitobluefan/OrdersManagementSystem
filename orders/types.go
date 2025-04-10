@@ -1,9 +1,14 @@
 package main
 
-import "context"
+import (
+	"context"
 
-type OrderService interface {
+	pb "github.com/vegitobluefan/OrdersManagementSystem-commons/api"
+)
+
+type OrdersService interface {
 	CreateOrder(context.Context) error
+	ValidateOrder(context.Context, *pb.CreateOrderRequest) error
 }
 
 type OrdersStore interface {
