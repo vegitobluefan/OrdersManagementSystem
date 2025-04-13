@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package stock;
+
+option go_package = "github.com/vegitobluefan/OrdersManagementSystem/genproto/stock";
+
+message StockRequest {
+  string name = 1;
+  int32 quantity = 2;
+}
+
+message StockResponse {
+  string name = 1;
+  int32 quantity = 2;
+}
+
+message UseItemResponse {
+  string status = 1;
+}
+
+message StockList {
+  repeated StockResponse items = 1;
+}
+
+message Empty {}
+
+service StockService {
+  rpc AddItem(StockRequest) returns (StockResponse);
+  rpc ListStock(Empty) returns (StockList);
+  rpc UseItem(StockRequest) returns (UseItemResponse);
+}
